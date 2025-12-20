@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Research — Yu Zhang" description="Research areas in AI for drug discovery.">
+  <h1 class="text-3xl font-semibold tracking-tight">Research</h1>
+  <p class="mt-3 max-w-3xl text-zinc-600 dark:text-zinc-300 leading-7">
+    I build ML systems to find molecules with desired bioactivity while managing safety/toxicity constraints.
+  </p>
+
+  <div class="mt-8 grid gap-4">
+    <div class="rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800">
+      <h2 class="font-semibold">Safety-aware discovery</h2>
+      <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+        Multitask learning for activity + toxicity; evaluation with novelty/generalization constraints.
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800">
+      <h2 class="font-semibold">Screening → models → validation</h2>
+      <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+        End-to-end workflows: featurization, training, triage, clustering, and reporting.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
