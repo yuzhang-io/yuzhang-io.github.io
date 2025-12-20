@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+
+const EMAIL = "YOUR_EMAIL@DOMAIN.COM";
+const GITHUB = "https://github.com/yuzhang-io";
+const SCHOLAR = "https://scholar.google.com/";
+---
+
+<BaseLayout
+  title="Yu Zhang — AI for Drug Discovery"
+  description="Scientist working in AI for drug discovery. Tools, publications, and climbing 14ers."
+>
+  <section class="relative overflow-hidden rounded-3xl border border-zinc-200 bg-gradient-to-b from-zinc-50 to-white p-8 shadow-sm dark:border-zinc-800 dark:from-zinc-950 dark:to-zinc-950">
+    <div class="max-w-2xl">
+      <p class="text-sm text-zinc-600 dark:text-zinc-300">Scientist · AI for drug discovery</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight">
+        Building practical ML systems for discovering better molecules.
+      </h1>
+      <p class="mt-4 text-base leading-7 text-zinc-600 dark:text-zinc-300">
+        I work on machine learning for drug discovery (screening, multitask models, safety/toxicity-aware prediction).
+        Outside the lab: climbing 14ers.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+           href="/software">
+          Explore software
+        </a>
+        <a class="rounded-xl border border-zinc-300 px-4 py-2 text-sm font-medium hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-900"
+           href="/publications">
+          Publications
+        </a>
+        <a class="rounded-xl border border-zinc-300 px-4 py-2 text-sm font-medium hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-900"
+           href="/Yu_Zhang_CV.pdf">
+          CV (PDF)
+        </a>
+      </div>
+
+      <div class="mt-6 text-sm text-zinc-600 dark:text-zinc-300">
+        <span class="font-medium text-zinc-900 dark:text-white">Links:</span>
+        <span class="ml-2 inline-flex flex-wrap gap-x-4 gap-y-2">
+          <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
+             href={GITHUB} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
+             href={`mailto:${EMAIL}`}>
+            Email
+          </a>
+          <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
+             href={SCHOLAR} target="_blank" rel="noreferrer">
+            Google Scholar
+          </a>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-lg font-semibold tracking-tight">Featured</h2>
+    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+      Quick entry points to what I do and build.
+    </p>
+
+    <div class="mt-5 grid gap-4 sm:grid-cols-2">
+      <Card
+        title="Research"
+        href="/research"
+        tag="Focus"
+        desc="AI for drug discovery: screening, multitask learning, safety-aware prediction."
+      />
+      <Card
+        title="Software"
+        href="/software"
+        tag="Tools"
+        desc="Open-source utilities (e.g., mols2img and other pipelines)."
+      />
+      <Card
+        title="Publications"
+        href="/publications"
+        tag="Papers"
+        desc="Selected papers + links to full list."
+      />
+      <Card
+        title="Climbing"
+        href="/climbing"
+        tag="Outside"
+        desc="14ers, trips, and a short list of peaks."
+      />
+    </div>
+  </section>
+</BaseLayout>
