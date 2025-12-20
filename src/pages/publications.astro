@@ -11,15 +11,129 @@ const BIBBASE_SRC =
   "https://bibbase.org/show?bib=https%3A%2F%2Fbibbase.org%2Fnetwork%2Ffiles%2FLpBgMckHoTKd8525z&noBootstrap=1&jsonp=1&author=Zhang";
 ---
 
-<BaseLayout title="Publications — Yu Zhang" description="Publications, featured work, and bibliography.">
-  <!-- Header -->
-  <section class="rounded-3xl border border-zinc-200 bg-zinc-50 p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-    <h1 class="text-3xl font-semibold tracking-tight">Publications</h1>
+<BaseLayout title="Publications — Yu Zhang" description="Featured papers, publication metrics, and bibliography.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden rounded-3xl border border-zinc-200 shadow-sm dark:border-zinc-800">
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(135deg, rgb(12,99,150) 0%, rgb(17,15,15) 18%, rgb(83,20,146) 100%);"
+    ></div>
 
-    <!-- Metrics: 3 columns on >=640px -->
-    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+    <div class="relative p-8 sm:p-10 text-white">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Publications</h1>
+      <p class="mt-3 max-w-5xl text-white/85 leading-7">
+        Selected work in generative modeling, systems biology, and data-driven drug discovery. Full bibliography below.
+      </p>
+
+      <!-- Featured (stacked) -->
+      <div class="mt-6 space-y-4">
+        <!-- Featured 1 -->
+        <article class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/15">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+            <div class="w-full sm:w-40 md:w-44 shrink-0">
+              <img
+                src="/img/featured/genai-antibiotics.jpg"
+                alt="Generative antibiotic design"
+                class="w-full h-36 sm:h-36 md:h-40 rounded-xl object-cover ring-1 ring-white/15"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="min-w-0">
+              <p class="text-base font-semibold">
+                A generative deep learning approach to de novo antibiotic design
+              </p>
+
+              <p class="mt-2 text-sm text-white/80">
+                <em>
+                  <a
+                    class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                    href="https://www.cell.com/cell/fulltext/S0092-8674(25)00855-4"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Cell
+                  </a>
+                </em>
+                , 2025 (Krishnan, A.; Anahtar, M. N; Valeri, J. A; ... <strong>Zhang, Y.</strong>; ...; Collins, J. J.)
+              </p>
+
+              <p class="mt-3 text-sm leading-6 text-white/80">
+                Generative models + biological validation to accelerate discovery of new antibiotic classes.
+              </p>
+
+              <p class="mt-3 text-sm text-white/75">
+                Featured in{" "}
+                <a class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                   href="https://www.bbc.com/news/articles/cgr94xxye2lo" target="_blank" rel="noreferrer">BBC</a>,{" "}
+                <a class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                   href="https://news.mit.edu/2025/using-generative-ai-researchers-design-compounds-kill-drug-resistant-bacteria-0814" target="_blank" rel="noreferrer">MIT News</a>,{" "}
+                <a class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                   href="https://www.cnet.com/tech/services-and-software/generative-ai-gave-mit-scientists-a-new-tool-to-fight-antibiotic-resistant-bacteria/" target="_blank" rel="noreferrer">CNET</a>,{" "}
+                <a class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                   href="https://spectrum.ieee.org/ai-drug-design-mit-antibiotics" target="_blank" rel="noreferrer">IEEE Spectrum</a>.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Featured 2 -->
+        <article class="rounded-2xl bg-white/10 p-5 ring-1 ring-white/15">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+            <div class="w-full sm:w-40 md:w-44 shrink-0">
+              <img
+                src="/img/featured/angiogenesis.jpg"
+                alt="Systems biology of angiogenesis signaling"
+                class="w-full h-36 sm:h-36 md:h-40 rounded-xl object-cover ring-1 ring-white/15"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="min-w-0 text-sm text-white/80 space-y-3">
+              <p>
+                Systems biology of angiogenesis signaling: Computational models and omics,{" "}
+                <a class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                   href="https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wsbm.1550" target="_blank" rel="noreferrer">
+                  <em>WIREs Mechanisms of Disease</em>
+                </a>, 2021 (<strong>Zhang, Y.</strong>, et al.)
+              </p>
+
+              <p>
+                Featured in{" "}
+                <a class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                   href="https://www.advancedsciencenews.com/decoding-the-language-of-cells-with-virtual-modeling/" target="_blank" rel="noreferrer">
+                  <em>Advanced Science News</em>
+                </a>
+              </p>
+
+              <p>
+                A systems biology model of Ang–Tie signaling,{" "}
+                <a class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                   href="https://www.nature.com/articles/s41540-021-00194-6" target="_blank" rel="noreferrer">
+                  <em>npj Systems Biology and Applications</em>
+                </a>, 2021.
+              </p>
+
+              <p>
+                Model-based analysis of Src inhibition and Tie2 activation,{" "}
+                <a class="underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                   href="https://www.cell.com/iscience/fulltext/S2589-0042(19)30385-2" target="_blank" rel="noreferrer">
+                  <em>iScience</em>
+                </a>, 2019.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="mt-10">
+    <h2 class="text-lg font-semibold tracking-tight">Metrics</h2>
+    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
       {STATS.map((s) => (
-        <div class="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900/40">
+        <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40">
           <div class="text-2xl font-semibold tracking-tight">{s.value}</div>
           <div class="mt-1 text-sm text-zinc-600 dark:text-zinc-300">{s.label}</div>
         </div>
@@ -27,120 +141,10 @@ const BIBBASE_SRC =
     </div>
   </section>
 
-  <!-- Featured -->
-  <section class="mt-10">
-    <h2 class="text-lg font-semibold tracking-tight">Featured</h2>
-
-    <!-- Featured tile 1 -->
-    <article class="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/30">
-      <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-        <!-- fixed-width image column -->
-        <div class="w-full sm:w-56 md:w-64 shrink-0">
-          <img
-            src="/img/featured/genai-antibiotics.jpg"
-            alt="Generative antibiotic design"
-            class="w-full h-44 sm:h-48 md:h-56 rounded-xl border border-zinc-200 bg-white object-cover dark:border-zinc-800"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- text column that doesn't overflow -->
-        <div class="min-w-0">
-          <p class="text-base font-semibold">
-            A generative deep learning approach to de novo antibiotic design
-          </p>
-
-          <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-            <em>
-              <a
-                class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-                href="https://www.cell.com/cell/fulltext/S0092-8674(25)00855-4"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Cell
-              </a>
-            </em>
-            , 2025 (Krishnan, A.; Anahtar, M. N; Valeri, J. A; ... <strong>Zhang, Y.</strong>; ...; Collins, J. J.)
-          </p>
-
-          <p class="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-            A landmark study demonstrating how generative AI can accelerate the discovery of new antibiotic classes.
-            This work integrates deep learning with biological validation to tackle antimicrobial resistance.
-          </p>
-
-          <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-300">
-            Featured in:
-            <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-               href="https://www.bbc.com/news/articles/cgr94xxye2lo" target="_blank" rel="noreferrer">BBC</a>,
-            <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-               href="https://news.mit.edu/2025/using-generative-ai-researchers-design-compounds-kill-drug-resistant-bacteria-0814" target="_blank" rel="noreferrer">MIT News</a>,
-            <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-               href="https://www.cnet.com/tech/services-and-software/generative-ai-gave-mit-scientists-a-new-tool-to-fight-antibiotic-resistant-bacteria/" target="_blank" rel="noreferrer">CNET</a>,
-            <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-               href="https://spectrum.ieee.org/ai-drug-design-mit-antibiotics" target="_blank" rel="noreferrer">IEEE Spectrum</a>
-            , and others.
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <!-- Featured tile 2 -->
-    <article class="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/30">
-      <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
-        <div class="w-full sm:w-56 md:w-64 shrink-0">
-          <img
-            src="/img/featured/angiogenesis.jpg"
-            alt="Systems biology of angiogenesis signaling"
-            class="w-full h-44 sm:h-48 md:h-56 rounded-xl border border-zinc-200 bg-white object-cover dark:border-zinc-800"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="min-w-0 space-y-3 text-sm text-zinc-600 dark:text-zinc-300">
-          <p>
-            Systems biology of angiogenesis signaling: Computational models and omics,
-            <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-               href="https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wsbm.1550" target="_blank" rel="noreferrer">
-              <em>WIREs Mechanisms of Disease</em>
-            </a>,
-            2021 (<strong>Zhang, Y.</strong>, et al.)
-          </p>
-
-          <p>
-            Featured in:
-            <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-               href="https://www.advancedsciencenews.com/decoding-the-language-of-cells-with-virtual-modeling/" target="_blank" rel="noreferrer">
-              <em>Advanced Science News</em>
-            </a>
-          </p>
-
-          <p>
-            A systems biology model of junctional localization and downstream signaling of the Ang–Tie signaling pathway,
-            <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-               href="https://www.nature.com/articles/s41540-021-00194-6" target="_blank" rel="noreferrer">
-              <em>npj Systems Biology and Applications</em>
-            </a>,
-            2021 (<strong>Zhang, Y.</strong>, et al.)
-          </p>
-
-          <p>
-            Promoting vascular stability through Src inhibition and Tie2 activation: A model-based analysis,
-            <a class="underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-900 dark:decoration-zinc-700 dark:hover:decoration-white"
-               href="https://www.cell.com/iscience/fulltext/S2589-0042(19)30385-2" target="_blank" rel="noreferrer">
-              <em>iScience</em>
-            </a>,
-            2019 (<strong>Zhang, Y.</strong>, et al.)
-          </p>
-        </div>
-      </div>
-    </article>
-  </section>
-
   <!-- Bibliography -->
   <section class="mt-12">
     <h2 class="text-lg font-semibold tracking-tight">Bibliography</h2>
-    <div class="mt-5 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/40">
+    <div class="mt-5 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40">
       <div class="my-bibbase-list">
         <script src={BIBBASE_SRC}></script>
       </div>
