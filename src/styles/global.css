@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
-/* simple defaults */
-:root {
-  color-scheme: light dark;
+/* --- BibBase cleanup / styling --- */
+
+/* Hide BibBase logo block (depends on BibBase markup) */
+#bibbase > div:first-of-type {
+  display: none !important;
+}
+
+/* Hide sorting / header area */
+#bibbase_header {
+  display: none !important;
+}
+
+/* Hide BibTeX links */
+.bibbase.bibtex.link,
+.bibbase_paper_content a[onclick*="showBib"] {
+  display: none !important;
+}
+
+/* Bold your specific name in the author list */
+.bibbase_paper_author strong {
+  color: #000;
+  font-weight: 800;
 }
