@@ -1,0 +1,286 @@
+---
+const {
+  coDataUrl = "/data/co-14ers.json",
+  myDataUrl = "/data/my-14ers.json",
+  mapId = "co14ersMap",
+  statusId = "co14ersStatus",
+  countId = "co14ersCount",
+  heroDoneId = "hero14ersDone",
+  heroTotalId = "hero14ersTotal",
+} = Astro.props as {
+  coDataUrl?: string;
+  myDataUrl?: string;
+  mapId?: string;
+  statusId?: string;
+  countId?: string;
+  heroDoneId?: string;
+  heroTotalId?: string;
+};
+---
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+
+<style>
+  /* Make Leaflet UI match your dark theme */
+  .leaflet-container {
+    background: transparent;
+    border-radius: 1rem;
+  }
+
+  .leaflet-control-zoom,
+  .leaflet-control-layers {
+    border: 1px solid rgba(63, 63, 70, 0.6) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: none !important;
+    backdrop-filter: blur(10px);
+    background: rgba(9, 9, 11, 0.55) !important;
+  }
+
+  .leaflet-bar a,
+  .leaflet-control-layers-toggle {
+    background: transparent !important;
+    color: rgba(244, 244, 245, 0.95) !important;
+  }
+
+  .leaflet-bar a:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .leaflet-bar a.leaflet-disabled {
+    color: rgba(244, 244, 245, 0.35) !important;
+  }
+
+  .leaflet-control-layers-expanded {
+    padding: 10px 12px !important;
+  }
+
+  .leaflet-control-layers label {
+    color: rgba(244, 244, 245, 0.9) !important;
+    font-size: 12px;
+  }
+
+  .leaflet-control-attribution {
+    background: rgba(9, 9, 11, 0.55) !important;
+    color: rgba(244, 244, 245, 0.75) !important;
+    border: 1px solid rgba(63, 63, 70, 0.5);
+    border-radius: 10px;
+    padding: 3px 8px;
+    backdrop-filter: blur(10px);
+  }
+
+  .leaflet-control-attribution a {
+    color: rgba(244, 244, 245, 0.85) !important;
+  }
+</style>
+
+<section class="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h2 class="text-lg font-semibold tracking-tight">Colorado 14ers Map</h2>
+      <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+        Purple = not yet · Green = climbed
+      </p>
+    </div>
+
+    <div class="text-sm text-zinc-600 dark:text-zinc-300">
+      <span
+        id={countId}
+        class="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-xs dark:border-zinc-800"
+      >
+        — / — climbed
+      </span>
+    </div>
+  </div>
+
+  <div
+    id={mapId}
+    class="mt-4 h-[440px] w-full rounded-2xl ring-1 ring-zinc-200 dark:ring-zinc-800"
+  ></div>
+
+  <div id={statusId} class="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+    Loading peaks…
+  </div>
+
+  <script
+    is:inline
+    define:vars={{
+      coDataUrl,
+      myDataUrl,
+      mapId,
+      statusId,
+      countId,
+      heroDoneId,
+      heroTotalId,
+    }}
+  >
+    (function () {
+      var CO_URL = coDataUrl;
+      var MY_URL = myDataUrl;
+      var MAP_ID = mapId;
+      var STATUS_ID = statusId;
+      var COUNT_ID = countId;
+      var HERO_DONE_ID = heroDoneId;
+      var HERO_TOTAL_ID = heroTotalId;
+
+      function $(id) { return document.getElementById(id); }
+
+      function setStatus(msg) {
+        var el = $(STATUS_ID);
+        if (el) el.textContent = msg || "";
+      }
+
+      function normalize(s) {
+        s = (s || "").toLowerCase();
+        s = s.replace(/mount\s+/g, "mt ");
+        s = s.replace(/\bmt\.\s*/g, "mt ");
+        s = s.replace(/[()]/g, " ");
+        s = s.replace(/[^a-z0-9\s]/g, "");
+        s = s.replace(/\s+/g, " ").trim();
+        return s;
+      }
+
+      function setCount(done, total) {
+        var pill = $(COUNT_ID);
+        if (pill) pill.textContent = done + " / " + total + " climbed";
+
+        var heroDone = $(HERO_DONE_ID);
+        var heroTotal = $(HERO_TOTAL_ID);
+        if (heroDone) heroDone.textContent = String(done);
+        if (heroTotal) heroTotal.textContent = String(total);
+      }
+
+      // Marker styling with "halo" for topo readability.
+      // (Halo is the stroke `color`, dot fill is `fillColor`.)
+      function style(isDone) {
+        return {
+          radius: isDone ? 5 : 4,
+          weight: 2,
+          color: "rgba(0,0,0,0.55)", // halo stroke
+          fillColor: isDone ? "#34d399" : "#a78bfa",
+          fillOpacity: 0.9,
+        };
+      }
+
+      window.addEventListener("load", function () {
+        var mapDiv = $(MAP_ID);
+        if (!mapDiv) {
+          setStatus("Map container not found.");
+          return;
+        }
+
+        if (!window.L) {
+          setStatus("Leaflet failed to load (window.L is missing). Check network for leaflet.js.");
+          return;
+        }
+
+        setStatus("Loading data…");
+
+        Promise.all([
+          fetch(CO_URL, { cache: "no-store" }).then(function (r) { return r.json(); }),
+          fetch(MY_URL, { cache: "no-store" }).then(function (r) { return r.json(); }),
+        ])
+          .then(function (arr) {
+            var coJson = arr[0];
+            var myJson = arr[1];
+
+            var coPeaks = (coJson && Array.isArray(coJson.peaks)) ? coJson.peaks : [];
+            var myPeaks = (myJson && Array.isArray(myJson.peaks)) ? myJson.peaks : [];
+
+            var climbedIds = {};
+            var climbedNames = {};
+
+            for (var i = 0; i < myPeaks.length; i++) {
+              var p = myPeaks[i];
+              if (p && p.climbed) {
+                if (p.id) climbedIds[String(p.id)] = true;
+                if (p.name) climbedNames[normalize(p.name)] = true;
+              }
+            }
+
+            var total = coPeaks.length;
+            var done = 0;
+            for (var j = 0; j < coPeaks.length; j++) {
+              var cp = coPeaks[j];
+              var isDone =
+                (cp && cp.id && climbedIds[String(cp.id)]) ||
+                (cp && cp.name && climbedNames[normalize(cp.name)]);
+              if (isDone) done++;
+            }
+            setCount(done, total);
+
+            setStatus("Rendering map…");
+
+            var map = window.L.map(MAP_ID, { scrollWheelZoom: false });
+
+            // Panes: guarantee climbed markers are on top
+            map.createPane("paneNotYet");
+            map.getPane("paneNotYet").style.zIndex = 420;
+
+            map.createPane("paneClimbed");
+            map.getPane("paneClimbed").style.zIndex = 430;
+
+            // Basemaps
+            var topo = window.L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+              maxZoom: 17,
+              attribution: "&copy; OpenStreetMap contributors, &copy; OpenTopoMap",
+            });
+
+            var dark = window.L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+              maxZoom: 19,
+              attribution: "&copy; OpenStreetMap &copy; CARTO",
+            });
+
+            topo.addTo(map);
+
+            window.L.control.layers(
+              { "Topo": topo, "Dark": dark },
+              {},
+              { collapsed: true }
+            ).addTo(map);
+
+            var bounds = [];
+
+            for (var k = 0; k < coPeaks.length; k++) {
+              var pk = coPeaks[k];
+              if (!pk || typeof pk.lat !== "number" || typeof pk.lon !== "number") continue;
+
+              var climbed =
+                (pk.id && climbedIds[String(pk.id)]) ||
+                (pk.name && climbedNames[normalize(pk.name)]);
+
+              var paneName = climbed ? "paneClimbed" : "paneNotYet";
+              var opts = style(!!climbed);
+              opts.pane = paneName;
+
+              var m = window.L.circleMarker([pk.lat, pk.lon], opts).addTo(map);
+
+              var elev = pk.elevation_ft ? ("<br/>" + pk.elevation_ft + " ft") : "";
+              var rng = pk.range ? ("<br/>" + pk.range) : "";
+              m.bindPopup("<b>" + pk.name + "</b>" + elev + rng + "<br/>" + (climbed ? "✓ climbed" : "not yet"));
+
+              bounds.push([pk.lat, pk.lon]);
+            }
+
+            if (bounds.length) {
+              map.fitBounds(bounds, { padding: [40, 40] });
+
+              // Keep the map feeling “Colorado-sized”
+              var z = map.getZoom();
+              if (z > 9) map.setZoom(9);
+              if (z < 6) map.setZoom(6);
+            } else {
+              map.setView([39.0, -105.7], 6);
+            }
+
+            setStatus("");
+          })
+          .catch(function (err) {
+            console.error("[FourteenerMap] failed:", err);
+            setStatus("Map failed to load. Check Console for details.");
+          });
+      });
+    })();
+  </script>
+</section>

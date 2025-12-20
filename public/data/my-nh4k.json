@@ -1,0 +1,246 @@
+{
+  "version": 1,
+  "source": "nh4ks-YZ.csv",
+  "peaks": [
+    {
+      "name": "Adams",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Bond",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Bond, West Peak",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Bondcliff",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Cabot",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Cannon",
+      "climbed": true,
+      "date": "2024-09-15"
+    },
+    {
+      "name": "Carrigain",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Carter Dome",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Carter, Middle",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Carter, South",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Eisenhower",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Field",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Flume",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Galehead",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Garfield",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Hale",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Hancock",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Hancock, South Peak",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Isolation",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Jackson",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Jefferson",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Kinsman, North Peak",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Kinsman, South Peak",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Lafayette",
+      "climbed": true,
+      "date": "2024-08-24"
+    },
+    {
+      "name": "Liberty",
+      "climbed": true,
+      "date": "2025-08-09"
+    },
+    {
+      "name": "Lincoln",
+      "climbed": true,
+      "date": "2024-08-24"
+    },
+    {
+      "name": "Madison",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Monroe",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Moosilauke",
+      "climbed": true,
+      "date": "2024-07-28"
+    },
+    {
+      "name": "Moriah",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Osceola",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Osceola, East Peak",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Owls Head",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Passaconaway",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Pierce [Clinton]",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Tecumseh",
+      "climbed": true,
+      "date": "2025-07-04"
+    },
+    {
+      "name": "Tom",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Tripyramid, Middle Peak",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Tripyramid, North Peak",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Twin, North",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Twin, South",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Washington",
+      "climbed": true,
+      "date": "2022-08-31"
+    },
+    {
+      "name": "Waubmek",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Whiteface",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Wildcat",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Wildcat, \"D\" Peak",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Willey",
+      "climbed": false,
+      "date": null
+    },
+    {
+      "name": "Zealand",
+      "climbed": false,
+      "date": null
+    }
+  ]
+}
