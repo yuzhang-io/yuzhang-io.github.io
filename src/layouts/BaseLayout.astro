@@ -4,20 +4,19 @@ import "../styles/global.css";
 const {
   title = "Yu Zhang — AI for Drug Discovery",
   description = "Yu Zhang, Ph.D. — AI for drug discovery with a focus on safety-aware modeling, antibiotic discovery, and practical ML systems that connect large-scale screening to experimental validation.",
-
-  // ✅ LinkedIn-safe default (PNG/JPG). Put this at: /public/og/og.png
-  ogImage = "/og/og.png",
+  author = "Yu Zhang",
+  ogImage = "/og/og.png",           // put at: /public/og/og.png
+  ogImageAlt = "Yu Zhang — AI for Drug Discovery",
+  ogType = "website",              // can override to "article" on posts/pages if you want
 } = Astro.props;
 
-// IMPORTANT: set this to your real deployed domain.
-// For GitHub user/organization pages: https://yuzhang-io.github.io
-// For project pages: https://yuzhang-io.github.io/<repo>
+// Your deployed domain (GitHub user/organization pages):
 const SITE = "https://yuzhang-io.github.io";
 
-const canonical = new URL(Astro.url.pathname, SITE).toString();
-const ogImageAbs = new URL(ogImage, SITE).toString();
+const canonicalUrl = new URL(Astro.url.pathname, SITE).toString();
+const ogImageUrl = new URL(ogImage, SITE).toString();
 
-// crude but effective: set og:image:type based on file extension
+// Set og:image:type based on extension (helps some scrapers)
 const ogImageType =
   ogImage.endsWith(".png") ? "image/png" :
   ogImage.endsWith(".jpg") || ogImage.endsWith(".jpeg") ? "image/jpeg" :
@@ -29,29 +28,35 @@ const ogImageType =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>{title}</title>
 
-    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="robots" content="index,follow" />
 
     <!-- Open Graph -->
-    <meta property="og:site_name" content="Yu Zhang" />
-    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={author} />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={canonicalUrl} />
 
-    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image" content={ogImageUrl} />
     {ogImageType ? <meta property="og:image:type" content={ogImageType} /> : null}
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageAbs} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
   </head>
 
   <body class="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
@@ -61,6 +66,7 @@ const ogImageType =
           <img src="/img/logo.svg" alt="Yu Zhang" class="h-5 w-5" />
           <span>Yu Zhang</span>
         </a>
+
         <nav class="text-sm flex gap-4 text-zinc-600 dark:text-zinc-300">
           <a class="hover:text-zinc-900 dark:hover:text-white" href="/research">Research</a>
           <a class="hover:text-zinc-900 dark:hover:text-white" href="/publications">Publications</a>
