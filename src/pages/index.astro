@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 
+// text / links
 const EMAIL = "yu.zhang@wyss.harvard.edu";
 const LINKEDIN = "https://www.linkedin.com/in/yuzhang13/";
 const SCHOLAR = "https://scholar.google.com/citations?user=IZ6qR4sAAAAJ&hl=en";
@@ -10,34 +12,44 @@ const WYSS = "https://wyss.harvard.edu";
 const MIT = "https://www.mit.edu";
 const BROAD = "https://www.broadinstitute.org";
 
+// ✅ Use ?url for the 4 small card icons (reliable on GH Pages + avoids astro:assets edge cases in arrays)
+import researchIcon from "../assets/img/index/research.webp?url";
+import softwareIcon from "../assets/img/index/software.webp?url";
+import publicationsIcon from "../assets/img/index/publications.webp?url";
+import hikingIcon from "../assets/img/index/hiking.webp?url";
+
+// ✅ Keep astro:assets for larger images (portrait stays jpg; mols2img becomes webp)
+import portraitImg from "../assets/img/portrait.jpg";
+import mols2imgImg from "../assets/img/mols2img.webp";
+
 const CARDS = [
   {
     href: "/research",
     title: "Research",
     tag: "ML",
     desc: "Safety-aware discovery, multitask learning, screening → validation.",
-    icon: "/img/index/research.png",
+    icon: researchIcon,
   },
   {
     href: "/software",
     title: "Software",
     tag: "Tools",
     desc: "Open-source tools like mols2img and analysis pipelines.",
-    icon: "/img/index/software.png",
+    icon: softwareIcon,
   },
   {
     href: "/publications",
     title: "Publications",
     tag: "Papers",
     desc: "Featured work + BibBase bibliography.",
-    icon: "/img/index/publications.png",
+    icon: publicationsIcon,
   },
   {
     href: "/hiking",
     title: "Hiking",
     tag: "Outside",
     desc: "Trails, trips, and peak lists.",
-    icon: "/img/index/hiking.png",
+    icon: hikingIcon,
   },
 ];
 ---
@@ -57,11 +69,14 @@ const CARDS = [
         <!-- Portrait -->
         <div class="w-full">
           <div class="h-64 sm:h-80 lg:h-full rounded-2xl overflow-hidden ring-1 ring-white/25">
-            <img
-              src="/img/portrait.jpg"
+            <Image
+              src={portraitImg}
               alt="Yu Zhang portrait"
               class="w-full h-full object-cover"
-              loading="lazy"
+              loading="eager"
+              decoding="async"
+              quality={82}
+              format="webp"
             />
           </div>
         </div>
@@ -163,11 +178,14 @@ const CARDS = [
               rel="noreferrer"
               class="inline-flex items-center gap-3 rounded-xl bg-white/10 px-3 py-2 ring-1 ring-white/15 hover:bg-white/15"
             >
-              <img
-                src="/img/mols2img.png"
+              <Image
+                src={mols2imgImg}
                 alt="mols2img"
                 class="h-8 w-8 rounded-lg bg-white/10 object-contain"
                 loading="lazy"
+                decoding="async"
+                quality={82}
+                format="webp"
               />
               <div class="leading-tight">
                 <div class="text-sm font-semibold text-white">mols2img</div>
@@ -188,29 +206,28 @@ const CARDS = [
         href={c.href}
         class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40"
       >
-		<div class="flex items-start justify-between gap-3">
-		<div class="flex items-start gap-4">
-			<img
-			src={c.icon}
-			alt=""
-			class="h-12 w-12 rounded-xl object-contain bg-zinc-50 ring-1 ring-zinc-200 dark:bg-zinc-900/60 dark:ring-zinc-800"
-			loading="lazy"
-			/>
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-start gap-4">
+            <img
+              src={c.icon}
+              alt=""
+              width="48"
+              height="48"
+              loading="lazy"
+              decoding="async"
+              class="h-12 w-12 rounded-xl object-contain bg-zinc-50 ring-1 ring-zinc-200 dark:bg-zinc-900/60 dark:ring-zinc-800"
+            />
 
-			<div class="min-w-0">
-			<div class="font-semibold">{c.title}</div>
-			<div class="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
-				{c.desc}
-			</div>
-			</div>
-		</div>
+            <div class="min-w-0">
+              <div class="font-semibold">{c.title}</div>
+              <div class="mt-1 text-sm text-zinc-600 dark:text-zinc-300">{c.desc}</div>
+            </div>
+          </div>
 
-		<span class="shrink-0 rounded-full border border-zinc-200 px-2 py-0.5 text-xs text-zinc-600 dark:border-zinc-800 dark:text-zinc-300">
-			{c.tag}
-		</span>
-		</div>
+          <span class="shrink-0 rounded-full border border-zinc-200 px-2 py-0.5 text-xs text-zinc-600 dark:border-zinc-800 dark:text-zinc-300">
+            {c.tag}
+          </span>
         </div>
-
       </a>
     ))}
   </section>
