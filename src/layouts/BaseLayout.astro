@@ -5,18 +5,16 @@ const {
   title = "Yu Zhang — AI for Drug Discovery",
   description = "Yu Zhang, Ph.D. — AI for drug discovery with a focus on safety-aware modeling, antibiotic discovery, and practical ML systems that connect large-scale screening to experimental validation.",
   author = "Yu Zhang",
-  ogImage = "/og/og.png",           // put at: /public/og/og.png
+  ogImage = "/og/og.png",
   ogImageAlt = "Yu Zhang — AI for Drug Discovery",
-  ogType = "website",              // can override to "article" on posts/pages if you want
+  ogType = "website",
 } = Astro.props;
 
-// Your deployed domain (GitHub user/organization pages):
 const SITE = "https://yuzhang-io.github.io";
 
 const canonicalUrl = new URL(Astro.url.pathname, SITE).toString();
 const ogImageUrl = new URL(ogImage, SITE).toString();
 
-// Set og:image:type based on extension (helps some scrapers)
 const ogImageType =
   ogImage.endsWith(".png") ? "image/png" :
   ogImage.endsWith(".jpg") || ogImage.endsWith(".jpeg") ? "image/jpeg" :
@@ -31,7 +29,6 @@ const ogImageType =
 
     <title>{title}</title>
     <link rel="canonical" href={canonicalUrl} />
-
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <meta name="description" content={description} />
@@ -44,7 +41,6 @@ const ogImageType =
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-
     <meta property="og:image" content={ogImageUrl} />
     {ogImageType ? <meta property="og:image:type" content={ogImageType} /> : null}
     <meta property="og:image:width" content="1200" />
@@ -67,14 +63,68 @@ const ogImageType =
           <span>Yu Zhang</span>
         </a>
 
-        <nav class="text-sm flex gap-4 text-zinc-600 dark:text-zinc-300">
+        <!-- Desktop nav -->
+        <nav class="hidden sm:flex text-sm gap-4 text-zinc-600 dark:text-zinc-300">
           <a class="hover:text-zinc-900 dark:hover:text-white" href="/research">Research</a>
           <a class="hover:text-zinc-900 dark:hover:text-white" href="/publications">Publications</a>
           <a class="hover:text-zinc-900 dark:hover:text-white" href="/software">Software</a>
           <a class="hover:text-zinc-900 dark:hover:text-white" href="/hiking">Hiking</a>
           <a class="hover:text-zinc-900 dark:hover:text-white" href="/Yu_Zhang_CV.pdf">CV</a>
         </nav>
+
+        <!-- Mobile menu button -->
+        <button
+          id="navToggle"
+          type="button"
+          class="sm:hidden inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white/70 px-3 py-2 text-sm font-medium text-zinc-700 shadow-sm backdrop-blur hover:bg-white dark:border-zinc-800 dark:bg-zinc-950/60 dark:text-zinc-200 dark:hover:bg-zinc-950"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+        >
+          Menu
+          <span aria-hidden="true" class="ml-2">☰</span>
+        </button>
       </div>
+
+      <!-- Mobile dropdown -->
+      <div id="mobileNav" class="sm:hidden hidden border-t border-zinc-200/70 dark:border-zinc-800/70">
+        <nav class="mx-auto max-w-5xl px-5 py-3 grid gap-1 text-sm text-zinc-700 dark:text-zinc-200">
+          <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/research">Research</a>
+          <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/publications">Publications</a>
+          <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/software">Software</a>
+          <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/hiking">Hiking</a>
+          <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/Yu_Zhang_CV.pdf">CV</a>
+        </nav>
+      </div>
+
+      <script is:inline>
+        (function () {
+          var btn = document.getElementById("navToggle");
+          var panel = document.getElementById("mobileNav");
+          if (!btn || !panel) return;
+
+          function setOpen(open) {
+            panel.classList.toggle("hidden", !open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+          }
+
+          btn.addEventListener("click", function () {
+            var open = panel.classList.contains("hidden");
+            setOpen(open);
+          });
+
+          // close on route click
+          panel.addEventListener("click", function (e) {
+            var a = e.target && e.target.closest ? e.target.closest("a") : null;
+            if (a) setOpen(false);
+          });
+
+          // close on escape
+          window.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") setOpen(false);
+          });
+        })();
+      </script>
     </header>
 
     <main class="mx-auto max-w-5xl px-5 py-10">
