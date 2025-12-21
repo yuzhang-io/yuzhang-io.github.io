@@ -4,7 +4,9 @@ import "../styles/global.css";
 const {
   title = "Yu Zhang — AI for Drug Discovery",
   description = "Scientist working in AI for drug discovery. Tools, publications, and climbing.",
-  ogImage = "/og/og.webp", // put this in /public/og/og.webp
+
+  // ✅ LinkedIn-safe default (PNG/JPG). Put this at: /public/og/og.png
+  ogImage = "/og/og.png",
 } = Astro.props;
 
 // IMPORTANT: set this to your real deployed domain.
@@ -14,6 +16,12 @@ const SITE = "https://yuzhang-io.github.io";
 
 const canonical = new URL(Astro.url.pathname, SITE).toString();
 const ogImageAbs = new URL(ogImage, SITE).toString();
+
+// crude but effective: set og:image:type based on file extension
+const ogImageType =
+  ogImage.endsWith(".png") ? "image/png" :
+  ogImage.endsWith(".jpg") || ogImage.endsWith(".jpeg") ? "image/jpeg" :
+  undefined;
 ---
 
 <!doctype html>
@@ -33,7 +41,9 @@ const ogImageAbs = new URL(ogImage, SITE).toString();
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+
     <meta property="og:image" content={ogImageAbs} />
+    {ogImageType ? <meta property="og:image:type" content={ogImageType} /> : null}
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
