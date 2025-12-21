@@ -1,13 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 
 const GITHUB_PROFILE = "https://github.com/yuzhang-io";
+
+// ✅ WebP banners in src/assets/img/software/
+import mols2imgBanner from "../assets/img/software/mols2img.webp";
+import mtoxBindersBanner from "../assets/img/software/mtox-binders.webp";
+import safetynetBanner from "../assets/img/software/safetynet.webp";
+import insilicobioticsBanner from "../assets/img/software/insilicobiotics.webp";
 
 const PROJECTS = [
   {
     title: "mols2img",
     subtitle: "SMILES/CXSMILES → instant structure sheets.",
-    banner: "/img/software/mols2img.png",
+    banner: mols2imgBanner,
     tags: ["Open-source", "Cheminformatics", "Web tool"],
     links: [
       { label: "Live tool", href: "https://yuzhang-io.github.io/mols2img/" },
@@ -18,7 +25,7 @@ const PROJECTS = [
   {
     title: "mtox-binders",
     subtitle: "Deep learning–guided design of antitoxins for marine toxin-induced neurotoxicity.",
-    banner: "/img/software/mtox-binders.png",
+    banner: mtoxBindersBanner,
     tags: ["Private", "In development", "Protein–ligand"],
     links: [],
     private: true,
@@ -26,7 +33,7 @@ const PROJECTS = [
   {
     title: "SafetyNet",
     subtitle: "Safety-aware prioritization and modeling for early drug discovery.",
-    banner: "/img/software/safetynet.png",
+    banner: safetynetBanner,
     tags: ["Private", "In development", "Toxicity"],
     links: [],
     private: true,
@@ -34,7 +41,7 @@ const PROJECTS = [
   {
     title: "insilicobiotics",
     subtitle: "Closed-loop antibiotic discovery: generate → predict → test → learn.",
-    banner: "/img/software/insilicobiotics.png",
+    banner: insilicobioticsBanner,
     tags: ["Private", "In development", "AMR"],
     links: [],
     private: true,
@@ -78,12 +85,16 @@ const PROJECTS = [
         <article class="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40">
           {/* Banner */}
           <div class="relative">
-            <img
+            <Image
               src={p.banner}
               alt={`${p.title} banner`}
               class="h-40 w-full object-cover"
               loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={82}
             />
+
             {p.private && (
               <div class="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white ring-1 ring-white/15">
                 Private / In development
