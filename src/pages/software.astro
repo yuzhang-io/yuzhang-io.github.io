@@ -12,6 +12,19 @@ import insilicobioticsBanner from "../assets/img/software/insilicobiotics.webp";
 
 const PROJECTS = [
   {
+    title: "my14ers",
+    subtitle:
+      "Track Colorado 14ers, toggle climbs, and export a glossy checklist snapshot to share your progress.",
+    // Banner is in public/ so we can reference it directly as a URL
+    banner: "/img/software/my14ers.png",
+    tags: ["Open-source", "Leaflet", "Export PNG"],
+    links: [
+      { label: "Live site", href: "https://yuzhang-io.github.io/my14ers/" },
+      { label: "GitHub", href: "https://github.com/yuzhang-io/my14ers" },
+    ],
+    private: false,
+  },
+  {
     title: "mols2img",
     subtitle: "SMILES/CXSMILES → instant structure sheets.",
     banner: mols2imgBanner,
@@ -85,15 +98,25 @@ const PROJECTS = [
         <article class="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40">
           {/* Banner */}
           <div class="relative">
-            <Image
-              src={p.banner}
-              alt={`${p.title} banner`}
-              class="h-40 w-full object-cover"
-              loading="lazy"
-              decoding="async"
-              format="webp"
-              quality={82}
-            />
+            {typeof p.banner === "string" ? (
+              <img
+                src={p.banner}
+                alt={`${p.title} banner`}
+                class="h-40 w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <Image
+                src={p.banner}
+                alt={`${p.title} banner`}
+                class="h-40 w-full object-cover"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={82}
+              />
+            )}
 
             {p.private && (
               <div class="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white ring-1 ring-white/15">
