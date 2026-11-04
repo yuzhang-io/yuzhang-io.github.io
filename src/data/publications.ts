@@ -5,10 +5,14 @@
 // first. Wrap your own name in **double asterisks** and it renders bold.
 // Everything except `title`, `authors`, `venue` and `year` is optional.
 //
+// A preprint goes in this same list with kind: "preprint" and
+// note: "Preprint". That renders the badge and keeps it out of the
+// peer-reviewed count in the page header.
+//
 // Last verified against Crossref: 2026-11-04
 // ---------------------------------------------------------------------------
 
-export type PubKind = "article" | "chapter" | "conference";
+export type PubKind = "article" | "chapter" | "conference" | "preprint";
 
 export interface Publication {
   title: string;
@@ -68,6 +72,17 @@ export const PUBLICATIONS: Publication[] = [
     pages: "112625",
     year: 2025,
     doi: "10.1016/j.isci.2025.112625",
+  },
+  {
+    title:
+      "Accelerating scientific discovery with autonomous goal-evolving agents",
+    authors:
+      "Du, Y.; Yu, B.; Liu, T.; Shen, T.; Chen, J.; Rittig, J. G.; Sun, K.; Zhang, Y. (Yikun); Krishnan, A.; **Zhang, Y.**; … ; Head-Gordon, T.; Gomes, C. P.; Sun, H.; Duan, C.; Schwaller, P.; Jin, W.",
+    venue: "arXiv:2512.21782",
+    year: 2025,
+    kind: "preprint",
+    note: "Preprint",
+    doi: "10.48550/arXiv.2512.21782",
   },
   {
     title:
