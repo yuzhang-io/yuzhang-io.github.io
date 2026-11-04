@@ -1,25 +1,16 @@
 @import "tailwindcss";
 
-/* --- BibBase cleanup / styling --- */
+/* ---------------------------------------------------------------------------
+   Hero panel colour.
 
-/* Hide BibBase logo block (depends on BibBase markup) */
-#bibbase > div:first-of-type {
-  display: none !important;
+   Every page header used to carry its own blue→black→purple gradient. They're
+   now one flat ink, defined once here — change this value and all five page
+   headers follow. Deep enough that white body text clears WCAG AAA.
+--------------------------------------------------------------------------- */
+:root {
+  --hero-ink: #16203a;
 }
 
-/* Hide sorting / header area */
-#bibbase_header {
-  display: none !important;
-}
-
-/* Hide BibTeX links */
-.bibbase.bibtex.link,
-.bibbase_paper_content a[onclick*="showBib"] {
-  display: none !important;
-}
-
-/* Bold your specific name in the author list */
-.bibbase_paper_author strong {
-  color: #000;
-  font-weight: 800;
+.hero-panel {
+  background-color: var(--hero-ink);
 }
