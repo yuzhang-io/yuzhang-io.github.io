@@ -27,7 +27,12 @@ This document is a **quick map of the repo**: routes → source files, plus key 
 
 - **Global styles**: `src/styles/global.css`
   - Tailwind import
-  - BibBase overrides (hide logo/header/bibtex links; bold author name)
+  - `--hero-ink` / `.hero-panel`: the one flat colour behind every page header
+
+## Content data
+
+- **Publications**: `src/data/publications.ts`
+  - Hand-maintained list rendered by `/publications`. Verified against Crossref 2026-11-04.
 
 ## Data (served from `public/`)
 
@@ -47,7 +52,6 @@ Everything in `public/` is served at the same path (e.g. `public/img/logo.svg` �
 - **Homepage card images (PNG)**: `public/img/index/*` → `/img/index/*`
 - **Featured images**: `public/img/featured/*` → `/img/featured/*`
 - **Hiking gallery images**: `public/img/hiking/gallery/*` → `/img/hiking/gallery/*`
-- **CV PDF**: `public/Yu_Zhang_CV.pdf` → `/Yu_Zhang_CV.pdf`
 
 ## Bundled assets (Astro-processed)
 
