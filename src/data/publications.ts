@@ -28,6 +28,8 @@ export interface Publication {
   kind?: PubKind;
   /** Short status line, e.g. "Accepted". Leave out for published papers. */
   note?: string;
+  /** Optional press coverage, rendered as a small line under the venue. */
+  press?: { label: string; url: string }[];
 }
 
 export const PUBLICATIONS: Publication[] = [
@@ -62,6 +64,12 @@ export const PUBLICATIONS: Publication[] = [
     pages: "5962–5979.e22",
     year: 2025,
     doi: "10.1016/j.cell.2025.07.033",
+    press: [
+      { label: "BBC", url: "https://www.bbc.com/news/articles/cgr94xxye2lo" },
+      { label: "MIT News", url: "https://news.mit.edu/2025/using-generative-ai-researchers-design-compounds-kill-drug-resistant-bacteria-0814" },
+      { label: "CNET", url: "https://www.cnet.com/tech/services-and-software/generative-ai-gave-mit-scientists-a-new-tool-to-fight-antibiotic-resistant-bacteria/" },
+      { label: "IEEE Spectrum", url: "https://spectrum.ieee.org/ai-drug-design-mit-antibiotics" },
+    ],
   },
   {
     title:
@@ -159,6 +167,9 @@ export const PUBLICATIONS: Publication[] = [
     pages: "e1550",
     year: 2022,
     doi: "10.1002/wsbm.1550",
+    press: [
+      { label: "Advanced Science News", url: "https://www.advancedsciencenews.com/decoding-the-language-of-cells-with-virtual-modeling/" },
+    ],
   },
   {
     title:
@@ -255,14 +266,3 @@ export const PUBLICATIONS: Publication[] = [
     doi: "10.1016/j.jtbi.2018.06.029",
   },
 ];
-
-/** Scholar metrics. Refresh these by hand; date so readers know how stale. */
-export const METRICS = {
-  asOf: "October 2026",
-  scholar: "https://scholar.google.com/citations?user=IZ6qR4sAAAAJ&hl=en",
-  items: [
-    { label: "Citations", value: "591" },
-    { label: "h-index", value: "14" },
-    { label: "i10-index", value: "16" },
-  ],
-};
