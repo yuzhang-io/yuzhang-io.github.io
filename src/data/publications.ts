@@ -51,9 +51,19 @@ export const PUBLICATIONS: Publication[] = [
       "Jiang, S.; Chen, Y.; Krishnan, A.; **Zhang, Y.**; Jin, W.",
     venue: "Transactions on Machine Learning Research (TMLR)",
     year: 2026,
-    kind: "conference",
     note: "Accepted",
     doi: "10.64898/2025.12.22.695983",
+  },
+  {
+    title:
+      "Deep learning-enabled discovery of antibiotics effective against Neisseria gonorrhoeae",
+    authors:
+      "Anahtar, M. N.; Valeri, J. A.; Modaresi, S. M.; Krishnan, A.; Donghia, N. M.; … ; **Zhang, Y.**; … ; Grad, Y. H.; Ingber, D. E.; Collins, J. J.",
+    venue: "Science Translational Medicine",
+    volume: "18(854)",
+    pages: "eads4699",
+    year: 2026,
+    doi: "10.1126/scitranslmed.ads4699",
   },
   {
     title: "A generative deep learning approach to de novo antibiotic design",

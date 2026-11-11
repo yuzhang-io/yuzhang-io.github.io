@@ -98,7 +98,7 @@ const journalCount = PUBLICATIONS.filter(
               />
 
               <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                <em>{p.venue}</em>{p.volume ? ` ${p.volume}` : ""}{p.pages ? `:${p.pages}` : ""}
+                <em>{p.venue}</em>{p.volume ? ` ${p.volume}` : ""}{p.pages ? (p.volume ? `:${p.pages}` : ` ${p.pages}`) : ""}, {p.year}
                 {p.kind === "chapter" ? " · book chapter" : ""}
                 {p.note ? (
                   <span class="ml-2 rounded-full border border-zinc-300 px-2 py-0.5 text-xs text-zinc-600 dark:border-zinc-700 dark:text-zinc-300">
