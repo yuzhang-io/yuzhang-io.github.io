@@ -1,0 +1,74 @@
+name: Check for new publications
+
+# Looks for papers missing from src/data/publications.ts once a month and
+# opens a pull request with them. It never commits to main: author matching
+# on a name as common as "Yu Zhang" is not reliable enough to trust blind,
+# so a human approves the diff.
+#
+# Run it by hand any time from the Actions tab (Run workflow).
+
+on:
+  schedule:
+    - cron: "17 9 1 * *" # 09:17 UTC on the 1st
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: check-publications
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Look for missing publications
+        id: check
+        run: python3 scripts/check_publications.py
+
+      - name: Set up Node
+        if: steps.check.outputs.found == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # If the generated TypeScript is malformed the build fails here and no
+      # pull request is opened, so a bad entry can never reach the site.
+      - name: Verify the site still builds
+        if: steps.check.outputs.found == 'true'
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+
+      - name: Open a pull request
+        if: steps.check.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_BODY: ${{ steps.check.outputs.body }}
+        run: |
+          set -euo pipefail
+          BRANCH="publications/auto-${{ github.run_id }}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add src/data/publications.ts
+          git commit -m "Add newly found publications
+
+          Detected by scripts/check_publications.py from ORCID and Crossref.
+          Review that each paper is really Yu's before merging."
+          git push origin "$BRANCH"
+          printf '%s\n' "$PR_BODY" > /tmp/pr-body.md
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "New publications found" \
+            --body-file /tmp/pr-body.md
