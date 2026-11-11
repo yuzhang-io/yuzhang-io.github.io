@@ -1,0 +1,499 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Hiking — Yu Zhang</title><link rel="canonical" href="https://yuzhang-io.github.io/hiking/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="description" content="Mountains, 14ers progress, and favorite routes."><meta name="author" content="Yu Zhang"><meta name="robots" content="index,follow"><!-- Open Graph --><meta property="og:site_name" content="Yu Zhang"><meta property="og:type" content="website"><meta property="og:title" content="Hiking — Yu Zhang"><meta property="og:description" content="Mountains, 14ers progress, and favorite routes."><meta property="og:url" content="https://yuzhang-io.github.io/hiking/"><meta property="og:image" content="https://yuzhang-io.github.io/og/og.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Yu Zhang — AI for Drug Discovery"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Hiking — Yu Zhang"><meta name="twitter:description" content="Mountains, 14ers progress, and favorite routes."><meta name="twitter:image" content="https://yuzhang-io.github.io/og/og.png"><meta name="twitter:image:alt" content="Yu Zhang — AI for Drug Discovery"><link rel="stylesheet" href="/_astro/hiking.By9EWkqh.css">
+<style>.peak-marker{transition:filter .14s ease,opacity .14s ease}.peak-marker.peak-notyet{opacity:.65;filter:drop-shadow(0 0 0 rgba(0,0,0,0))}.peak-marker.peak-notyet:hover{opacity:1;filter:drop-shadow(0 0 10px rgba(226,232,240,.35));cursor:pointer}.peak-marker.peak-climbed{filter:drop-shadow(0 0 10px rgba(0,255,204,.55))}.peak-marker.peak-climbed:hover{filter:drop-shadow(0 0 14px rgba(0,255,204,.85));cursor:pointer}.leaflet-container .leaflet-control{background:transparent!important;box-shadow:none!important}.leaflet-control-zoom,.leaflet-control-layers{border:1px solid rgba(63,63,70,.6)!important;border-radius:12px!important;overflow:hidden;box-shadow:none!important;backdrop-filter:blur(10px);background:#09090b8c!important}.leaflet-control-zoom a.leaflet-control-zoom-in,.leaflet-control-zoom a.leaflet-control-zoom-out{background:#09090ba6!important;color:#f4f4f5f2!important;border-bottom:1px solid rgba(63,63,70,.6)!important}.leaflet-control-zoom a.leaflet-control-zoom-out{border-bottom:none!important}.leaflet-control-zoom a:hover{background:#ffffff14!important}.leaflet-control-zoom a.leaflet-disabled{color:#f4f4f559!important}.leaflet-control-layers-toggle{background-color:#09090ba6!important;border-radius:10px!important;filter:invert(1) brightness(1.2) contrast(1.1)!important}.leaflet-control-layers-toggle:hover{background-color:#ffffff14!important}.leaflet-control-layers-expanded{padding:10px 12px!important;background:#09090ba6!important}.leaflet-control-layers label{color:#f4f4f5e6!important;font-size:12px}.leaflet-control-attribution{background:#09090b8c!important;color:#f4f4f5bf!important;border:1px solid rgba(63,63,70,.5);border-radius:10px;padding:3px 8px;backdrop-filter:blur(10px)}.leaflet-control-attribution a{color:#f4f4f5d9!important}.leaflet-container .leaflet-control-reset a{background:#09090ba6!important;color:#f4f4f5f2!important;text-decoration:none!important;font-size:16px;line-height:26px}.leaflet-container .leaflet-control-reset a:hover{background:#ffffff14!important}.leaflet-container[data-astro-cid-ppqb5h35]{background:transparent;border-radius:1rem}.leaflet-tile[data-astro-cid-ppqb5h35].hillshade-tile{mix-blend-mode:multiply}
+</style></head> <body class="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100"> <header class="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/80 backdrop-blur dark:border-zinc-800/70 dark:bg-zinc-950/70"> <div class="mx-auto max-w-5xl px-5 py-3 flex items-center justify-between"> <a href="/" class="flex items-center gap-2 font-semibold tracking-tight"> <img src="/img/logo.svg" alt="Yu Zhang" class="h-5 w-5"> <span>Yu Zhang</span> </a> <!-- Desktop nav --> <nav class="hidden sm:flex text-sm gap-4 text-zinc-600 dark:text-zinc-300"> <a class="hover:text-zinc-900 dark:hover:text-white" href="/research">Research</a> <a class="hover:text-zinc-900 dark:hover:text-white" href="/publications">Publications</a> <a class="hover:text-zinc-900 dark:hover:text-white" href="/software">Software</a> <a class="hover:text-zinc-900 dark:hover:text-white" href="/hiking">Hiking</a> </nav> <!-- Mobile menu button --> <button id="navToggle" type="button" class="sm:hidden inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white/70 px-3 py-2 text-sm font-medium text-zinc-700 shadow-sm backdrop-blur hover:bg-white dark:border-zinc-800 dark:bg-zinc-950/60 dark:text-zinc-200 dark:hover:bg-zinc-950" aria-haspopup="true" aria-expanded="false" aria-controls="mobileNav">
+Menu
+<span aria-hidden="true" class="ml-2">☰</span> </button> </div> <!-- Mobile dropdown --> <div id="mobileNav" class="sm:hidden hidden border-t border-zinc-200/70 dark:border-zinc-800/70"> <nav class="mx-auto max-w-5xl px-5 py-3 grid gap-1 text-sm text-zinc-700 dark:text-zinc-200"> <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/research">Research</a> <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/publications">Publications</a> <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/software">Software</a> <a class="rounded-xl px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/40" href="/hiking">Hiking</a> </nav> </div> <script>
+        (function () {
+          var btn = document.getElementById("navToggle");
+          var panel = document.getElementById("mobileNav");
+          if (!btn || !panel) return;
+
+          function setOpen(open) {
+            panel.classList.toggle("hidden", !open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+          }
+
+          btn.addEventListener("click", function () {
+            var open = panel.classList.contains("hidden");
+            setOpen(open);
+          });
+
+          // close on route click
+          panel.addEventListener("click", function (e) {
+            var a = e.target && e.target.closest ? e.target.closest("a") : null;
+            if (a) setOpen(false);
+          });
+
+          // close on escape
+          window.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") setOpen(false);
+          });
+        })();
+      </script> </header> <main class="mx-auto max-w-5xl px-5 py-10">   <section class="relative overflow-hidden rounded-3xl border border-zinc-200 shadow-sm dark:border-zinc-800"> <div class="absolute inset-0 hero-panel"></div> <div class="relative p-8 sm:p-10 text-white"> <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"> <div> <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Hiking</h1> <p class="mt-3 max-w-3xl text-white/85 leading-7">
+Colorado peaks, long days, and alpine miles. Tracking my 14ers and other climbs.
+</p> <div class="mt-4 flex flex-wrap gap-3"> <div class="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-2 ring-1 ring-white/15"> <span class="text-sm font-semibold">14ers:</span> <span class="text-sm text-white/90"> <span id="hero14ersDone">—</span> / <span id="hero14ersTotal">—</span> </span> </div> <div class="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-2 ring-1 ring-white/15"> <span class="text-sm font-semibold">NH 4Ks:</span> <span class="text-sm text-white/90"> <span id="heroNhDone">—</span> / <span id="heroNhTotal">—</span> </span> </div> </div> </div> <div class="flex flex-wrap gap-3"> <a href="https://instagram.com/zhangyupulpo" target="_blank" rel="noreferrer" class="rounded-xl bg-white/10 px-4 py-2 text-sm font-medium ring-1 ring-white/20 hover:bg-white/15">
+Instagram ↗
+</a> <a href="https://www.14ers.com/" target="_blank" rel="noreferrer" class="rounded-xl bg-white/10 px-4 py-2 text-sm font-medium ring-1 ring-white/20 hover:bg-white/15">
+14ers.com ↗
+</a> </div> </div> </div> </section>  <section class="mt-10"> <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script><!-- Component-local styles (layout wrappers, etc.) --><!-- IMPORTANT: Leaflet DOM is injected at runtime, so make these GLOBAL --><section class="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" data-astro-cid-ppqb5h35> <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between" data-astro-cid-ppqb5h35> <div data-astro-cid-ppqb5h35> <h2 class="text-lg font-semibold tracking-tight" data-astro-cid-ppqb5h35>Colorado 14ers Map</h2> </div> <span id="co14ersCount" class="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-xs text-zinc-600 dark:border-zinc-800 dark:text-zinc-300" data-astro-cid-ppqb5h35>
+— / — climbed
+</span> </div> <div class="mt-4 grid gap-4 lg:grid-cols-5" data-astro-cid-ppqb5h35> <div class="lg:col-span-3" data-astro-cid-ppqb5h35> <!-- Fixed-height map wrapper so it matches the list --> <div id="co14ersMapWrap" class="relative h-[440px] overflow-hidden rounded-2xl ring-1 ring-zinc-200 dark:ring-zinc-800" data-astro-cid-ppqb5h35> <div id="co14ersMap" class="absolute inset-0 rounded-2xl" data-astro-cid-ppqb5h35></div> <!-- status overlay (does not change layout height) --> <div id="co14ersStatus" class="pointer-events-none absolute bottom-3 left-3 rounded-xl border border-zinc-200 bg-white/85 px-3 py-1 text-xs text-zinc-700 shadow-sm backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/55 dark:text-zinc-200" data-astro-cid-ppqb5h35>
+Loading peaks…
+</div> </div> </div> <aside class="lg:col-span-2" data-astro-cid-ppqb5h35> <!-- Fixed-height list card to match map height --> <div class="h-[440px] rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40 flex flex-col" data-astro-cid-ppqb5h35> <div class="flex items-center justify-between gap-3" data-astro-cid-ppqb5h35> <div class="text-sm font-semibold text-zinc-900 dark:text-white" data-astro-cid-ppqb5h35>Peaks</div> <input id="peakSearch" type="search" placeholder="Search…" class="w-44 rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs text-zinc-700 outline-none placeholder:text-zinc-400 focus:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-950/40 dark:text-zinc-200 dark:placeholder:text-zinc-500" data-astro-cid-ppqb5h35> </div> <div class="mt-3 flex-1 overflow-y-auto pr-1" data-astro-cid-ppqb5h35> <div id="peakList" class="grid gap-2" data-astro-cid-ppqb5h35></div> </div> <div class="mt-3 text-xs text-zinc-500 dark:text-zinc-400" data-astro-cid-ppqb5h35>
+Sorted by elevation. Click to fly to a peak.
+</div> </div> </aside> </div> <script>(function(){const coDataUrl = "/data/co-14ers.json";
+const myDataUrl = "/data/my-14ers.json";
+const mapId = "co14ersMap";
+const statusId = "co14ersStatus";
+const countId = "co14ersCount";
+const heroDoneId = "hero14ersDone";
+const heroTotalId = "hero14ersTotal";
+
+    (function () {
+      var CO_URL = coDataUrl;
+      var MY_URL = myDataUrl;
+      var MAP_ID = mapId;
+      var STATUS_ID = statusId;
+      var COUNT_ID = countId;
+      var HERO_DONE_ID = heroDoneId;
+      var HERO_TOTAL_ID = heroTotalId;
+
+      function $(id) { return document.getElementById(id); }
+
+      function setStatus(msg) {
+        var el = $(STATUS_ID);
+        if (!el) return;
+        el.textContent = msg || "";
+        el.style.display = msg ? "block" : "none";
+      }
+
+      function normalize(s) {
+        s = (s || "").toLowerCase();
+        s = s.replace(/mount\s+/g, "mt ");
+        s = s.replace(/\bmt\.\s*/g, "mt ");
+        s = s.replace(/[()]/g, " ");
+        s = s.replace(/[^a-z0-9\s]/g, "");
+        s = s.replace(/\s+/g, " ").trim();
+        return s;
+      }
+
+      function setCount(done, total) {
+        var pill = $(COUNT_ID);
+        if (pill) pill.textContent = done + " / " + total + " climbed";
+
+        var heroDone = $(HERO_DONE_ID);
+        var heroTotal = $(HERO_TOTAL_ID);
+        if (heroDone) heroDone.textContent = String(done);
+        if (heroTotal) heroTotal.textContent = String(total);
+      }
+
+      // Climbed: neon mint filled dot + white ring halo
+      function markerOptsClimbed() {
+        return {
+          radius: 5,
+          stroke: true,
+          color: "#ffffff",
+          weight: 1,
+          opacity: 0.95,
+          fill: true,
+          fillColor: "#00c7a8",
+          fillOpacity: 0.95,
+        };
+      }
+
+      // Not yet: hollow grey ring
+      function markerOptsNotYet() {
+        return {
+          radius: 5,
+          stroke: true,
+          color: "#e2e8f0",
+          weight: 1,
+          opacity: 0.75,
+          fill: false,
+        };
+      }
+
+      var CO_CLAMP_BOUNDS = [
+        [36.7, -109.3],
+        [41.2, -102.0],
+      ];
+
+      window.addEventListener("load", function () {
+        var mapDiv = $(MAP_ID);
+        if (!mapDiv) return setStatus("Map container not found.");
+        if (!window.L) return setStatus("Leaflet failed to load (window.L is missing).");
+
+        setStatus("Loading peaks…");
+
+        Promise.all([
+          fetch(CO_URL, { cache: "no-store" }).then(function (r) { return r.json(); }),
+          fetch(MY_URL, { cache: "no-store" }).then(function (r) { return r.json(); }),
+        ])
+          .then(function (arr) {
+            var coJson = arr[0];
+            var myJson = arr[1];
+
+            var coPeaks = (coJson && Array.isArray(coJson.peaks)) ? coJson.peaks : [];
+            var myPeaks = (myJson && Array.isArray(myJson.peaks)) ? myJson.peaks : [];
+
+            var climbedIds = {};
+            var climbedNames = {};
+
+            for (var i = 0; i < myPeaks.length; i++) {
+              var p = myPeaks[i];
+              if (p && p.climbed) {
+                if (p.id) climbedIds[String(p.id)] = true;
+                if (p.name) climbedNames[normalize(p.name)] = true;
+              }
+            }
+
+            var total = coPeaks.length;
+            var done = 0;
+            for (var j = 0; j < coPeaks.length; j++) {
+              var cp = coPeaks[j];
+              var isDone =
+                (cp && cp.id && climbedIds[String(cp.id)]) ||
+                (cp && cp.name && climbedNames[normalize(cp.name)]);
+              if (isDone) done++;
+            }
+            setCount(done, total);
+
+            setStatus("Rendering map…");
+
+            var map = window.L.map(MAP_ID, {
+              scrollWheelZoom: false,
+              renderer: window.L.svg(),
+            });
+
+            map.createPane("paneNotYet");
+            map.getPane("paneNotYet").style.zIndex = 420;
+            map.createPane("paneClimbed");
+            map.getPane("paneClimbed").style.zIndex = 430;
+
+            var MAPBOX_TOKEN = "pk.eyJ1Ijoiemhhbmd5dXR5biIsImEiOiJjbWplcjhmMHIwa2psM2tweTFyaTl3aWVmIn0.zCJY08mlW89VE-CNDsUaOg";
+            var mapboxStyleTiles =
+              "https://api.mapbox.com/styles/v1/zhangyutyn/cmjeroj9p001x01s1g91zapo2/tiles/256/{z}/{x}/{y}@2x?access_token=" +
+              MAPBOX_TOKEN;
+
+            var dark = window.L.tileLayer(mapboxStyleTiles, {
+              maxZoom: 20,
+              tileSize: 256,
+              zoomOffset: 0,
+              attribution: "&copy; Mapbox",
+            });
+
+            var topo = window.L.tileLayer(
+              "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+              { maxZoom: 17, attribution: "&copy; OpenStreetMap contributors, &copy; OpenTopoMap" }
+            );
+
+            var relief = window.L.tileLayer(
+              "https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
+              { maxZoom: 13, attribution: "Tiles &copy; Esri" }
+            );
+
+            var hillshade = window.L.tileLayer(
+              "https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}",
+              {
+                maxZoom: 16,
+                opacity: 0.35,
+                className: "hillshade-tile",
+                attribution: "Tiles &copy; Esri",
+              }
+            );
+
+            var labels = window.L.tileLayer(
+              "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+              { maxZoom: 19, opacity: 0.55, attribution: "Tiles &copy; Esri" }
+            );
+
+            dark.addTo(map);
+
+            window.L.control.layers(
+              { "Dark": dark, "Topo": topo, "Relief (clean)": relief },
+              { "Hillshade": hillshade, "Labels": labels },
+              { collapsed: true }
+            ).addTo(map);
+
+            window.L.control.scale({ imperial: true, metric: false, position: "bottomleft" }).addTo(map);
+
+            // --- Add Reset View button ---
+            var home = { center: null, zoom: null, bounds: null };
+
+            var ResetControl = window.L.Control.extend({
+              options: { position: "topleft" },
+              onAdd: function () {
+                var container = window.L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-control-reset");
+                var a = window.L.DomUtil.create("a", "leaflet-control-reset-btn", container);
+                a.href = "#";
+                a.title = "Reset view";
+                a.setAttribute("role", "button");
+                a.setAttribute("aria-label", "Reset view");
+                a.innerHTML = "⟳";
+
+                window.L.DomEvent.disableClickPropagation(container);
+                window.L.DomEvent.on(a, "click", function (e) {
+                  window.L.DomEvent.preventDefault(e);
+                  if (home.bounds) map.fitBounds(home.bounds, { padding: [18, 18], maxZoom: home.zoom });
+                  else if (home.center && typeof home.zoom === "number") map.setView(home.center, home.zoom);
+                });
+
+                return container;
+              }
+            });
+
+            map.addControl(new ResetControl());
+
+            var bounds = [];
+            var markerByKey = {};
+            var listData = [];
+
+            for (var k = 0; k < coPeaks.length; k++) {
+              var pk = coPeaks[k];
+              if (!pk || typeof pk.lat !== "number" || typeof pk.lon !== "number") continue;
+
+              var climbed =
+                (pk.id && climbedIds[String(pk.id)]) ||
+                (pk.name && climbedNames[normalize(pk.name)]);
+
+              var opts = climbed ? markerOptsClimbed() : markerOptsNotYet();
+              opts.pane = climbed ? "paneClimbed" : "paneNotYet";
+              opts.className = "peak-marker " + (climbed ? "peak-climbed" : "peak-notyet");
+
+              var m = window.L.circleMarker([pk.lat, pk.lon], opts).addTo(map);
+
+              var elev = pk.elevation_ft ? ("<br/>" + pk.elevation_ft + " ft") : "";
+              var rng = pk.range ? ("<br/>" + pk.range) : "";
+              m.bindPopup("<b>" + pk.name + "</b>" + elev + rng + "<br/>" + (climbed ? "✓ climbed" : "not yet"));
+              m.bindTooltip(pk.name, { direction: "top", opacity: 0.9, offset: [0, -8] });
+
+              var key = pk.id ? String(pk.id) : String(k);
+              markerByKey[key] = m;
+
+              listData.push({
+                key: key,
+                name: pk.name || "Unknown",
+                climbed: !!climbed,
+                lat: pk.lat,
+                lon: pk.lon,
+                elevation_ft: (typeof pk.elevation_ft === "number" ? pk.elevation_ft : 0),
+              });
+
+              bounds.push([pk.lat, pk.lon]);
+            }
+
+            if (bounds.length) {
+              var peakBounds = window.L.latLngBounds(bounds);
+              var clampBounds = window.L.latLngBounds(CO_CLAMP_BOUNDS);
+              var finalBounds = clampBounds.contains(peakBounds) ? peakBounds : clampBounds;
+
+              map.fitBounds(finalBounds, { padding: [18, 18], maxZoom: 11 });
+
+              // store the “home” view for reset
+              home.bounds = window.L.latLngBounds(finalBounds);
+              home.center = map.getCenter();
+              home.zoom = map.getZoom();
+            } else {
+              map.setView([39.0, -105.7], 7);
+              home.center = map.getCenter();
+              home.zoom = map.getZoom();
+            }
+
+            // --- List rendering (SORT BY ELEVATION DESC) ---
+            var listEl = $("peakList");
+            var searchEl = $("peakSearch");
+
+            function pillHtml(item) {
+              var dot =
+                '<span class="inline-flex h-5 w-5 items-center justify-center rounded-full ring-1 ' +
+                (item.climbed
+                  ? 'bg-emerald-500/15 text-emerald-600 ring-emerald-500/30 dark:text-emerald-300'
+                  : 'bg-zinc-500/10 text-zinc-200 ring-zinc-500/25 dark:text-zinc-200') +
+                '">' + (item.climbed ? "✓" : "•") + "</span>";
+
+              var elev = item.elevation_ft
+                ? ('<span class="ml-auto text-[11px] text-zinc-500 dark:text-zinc-400">' + item.elevation_ft + " ft</span>")
+                : "";
+
+              return (
+                '<button data-key="' + item.key + '" class="group flex w-full items-center gap-2 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-left text-sm ' +
+                'hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900/30 dark:hover:bg-zinc-900/50">' +
+                dot +
+                '<span class="min-w-0 truncate text-zinc-900 dark:text-white">' + item.name + "</span>" +
+                elev +
+                "</button>"
+              );
+            }
+
+            function renderList(filter) {
+              if (!listEl) return;
+              var q = (filter || "").toLowerCase().trim();
+              var html = "";
+
+              var sorted = listData.slice().sort(function (a, b) {
+                if (b.elevation_ft !== a.elevation_ft) return b.elevation_ft - a.elevation_ft;
+                if (a.climbed !== b.climbed) return a.climbed ? -1 : 1;
+                return a.name.localeCompare(b.name);
+              });
+
+              for (var i2 = 0; i2 < sorted.length; i2++) {
+                var it = sorted[i2];
+                if (q && it.name.toLowerCase().indexOf(q) === -1) continue;
+                html += pillHtml(it);
+              }
+
+              listEl.innerHTML = html;
+            }
+
+            renderList("");
+
+            if (listEl) {
+              listEl.addEventListener("click", function (e) {
+                var t = e.target;
+                var btn = t && t.closest ? t.closest("button[data-key]") : null;
+                if (!btn) return;
+
+                var key = btn.getAttribute("data-key");
+                var m = markerByKey[key];
+                if (!m) return;
+
+                var ll = m.getLatLng();
+                map.flyTo(ll, Math.max(map.getZoom(), 10), { duration: 0.8 });
+                m.openPopup();
+              });
+            }
+
+            if (searchEl) {
+              searchEl.addEventListener("input", function () {
+                renderList(searchEl.value);
+              });
+            }
+
+            setStatus("");
+          })
+          .catch(function (err) {
+            console.error("[FourteenerMap] failed:", err);
+            setStatus("Map failed to load. Check Console for details.");
+          });
+      });
+    })();
+  })();</script> </section> </section>  <section class="mt-10"> <div class="flex items-end justify-between gap-4"> <h2 class="text-lg font-semibold tracking-tight">Gallery</h2> <button id="toggleAll" class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" type="button">
+Show all
+</button> </div>   <div id="filmstrip" class="mt-4 flex gap-3 overflow-x-auto pb-2"> <button class="group relative shrink-0 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" style="width: 220px;" data-full="/img/hiking/gallery/01.jpg"> <img src="/img/hiking/gallery/01.jpg" alt="" class="h-36 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative shrink-0 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" style="width: 220px;" data-full="/img/hiking/gallery/02.jpg"> <img src="/img/hiking/gallery/02.jpg" alt="" class="h-36 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative shrink-0 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" style="width: 220px;" data-full="/img/hiking/gallery/03.jpg"> <img src="/img/hiking/gallery/03.jpg" alt="" class="h-36 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative shrink-0 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" style="width: 220px;" data-full="/img/hiking/gallery/04.jpg"> <img src="/img/hiking/gallery/04.jpg" alt="" class="h-36 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative shrink-0 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" style="width: 220px;" data-full="/img/hiking/gallery/05.jpg"> <img src="/img/hiking/gallery/05.jpg" alt="" class="h-36 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative shrink-0 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" style="width: 220px;" data-full="/img/hiking/gallery/06.jpg"> <img src="/img/hiking/gallery/06.jpg" alt="" class="h-36 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button> </div>  <div id="allGrid" class="mt-4 hidden grid gap-3 sm:grid-cols-2 lg:grid-cols-3"> <button class="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" data-full="/img/hiking/gallery/01.jpg"> <img src="/img/hiking/gallery/01.jpg" alt="" class="h-56 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" data-full="/img/hiking/gallery/02.jpg"> <img src="/img/hiking/gallery/02.jpg" alt="" class="h-56 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" data-full="/img/hiking/gallery/03.jpg"> <img src="/img/hiking/gallery/03.jpg" alt="" class="h-56 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" data-full="/img/hiking/gallery/04.jpg"> <img src="/img/hiking/gallery/04.jpg" alt="" class="h-56 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" data-full="/img/hiking/gallery/05.jpg"> <img src="/img/hiking/gallery/05.jpg" alt="" class="h-56 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button><button class="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40" data-full="/img/hiking/gallery/06.jpg"> <img src="/img/hiking/gallery/06.jpg" alt="" class="h-56 w-full object-cover transition group-hover:scale-[1.02]" loading="lazy"> </button> </div>  <!-- Lightbox --> <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"> <button id="lightboxClose" class="absolute right-4 top-4 rounded-xl bg-white/10 px-3 py-2 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-white/15">
+Close
+</button> <img id="lightboxImg" src="" alt="" class="max-h-[85vh] max-w-[95vw] rounded-2xl ring-1 ring-white/20"> </div> <script>
+      (function () {
+        var box = document.getElementById("lightbox");
+        var img = document.getElementById("lightboxImg");
+        var close = document.getElementById("lightboxClose");
+        var film = document.getElementById("filmstrip");
+        var grid = document.getElementById("allGrid");
+        var toggle = document.getElementById("toggleAll");
+        var showingAll = false;
+
+        function openLightbox(src) {
+          if (!img || !box) return;
+          img.src = src;
+          box.classList.remove("hidden");
+          box.classList.add("flex");
+        }
+        function closeLightbox() {
+          if (!img || !box) return;
+          box.classList.add("hidden");
+          box.classList.remove("flex");
+          img.src = "";
+        }
+
+        function onClickContainer(e) {
+          var t = e.target;
+          var btn = t && t.closest ? t.closest("button[data-full]") : null;
+          if (!btn) return;
+          openLightbox(btn.dataset.full);
+        }
+
+        if (film) film.addEventListener("click", onClickContainer);
+        if (grid) grid.addEventListener("click", onClickContainer);
+
+        if (toggle && grid) {
+          toggle.addEventListener("click", function () {
+            showingAll = !showingAll;
+            grid.classList.toggle("hidden", !showingAll);
+            toggle.textContent = showingAll ? "Show less" : "Show all";
+          });
+        }
+
+        if (close) close.addEventListener("click", closeLightbox);
+        if (box) box.addEventListener("click", function (e) { if (e.target === box) closeLightbox(); });
+        window.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLightbox(); });
+      })();
+    </script> </section>  <section class="mt-10"> <details open class="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40"> <summary class="cursor-pointer list-none"> <div class="flex items-end justify-between gap-4"> <div> <h2 class="text-lg font-semibold tracking-tight">New Hampshire 4,000-footers</h2> </div> <span id="nhPill" class="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1 text-xs text-zinc-600 dark:border-zinc-800 dark:text-zinc-300">
+— / — climbed
+</span> </div> </summary> <div class="mt-4"> <div id="nhList" class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3"></div> <div id="nhErr" class="mt-3 hidden text-sm text-zinc-500 dark:text-zinc-400"></div> </div> </details> <script>
+      (function () {
+        function $(id) { return document.getElementById(id); }
+
+        var heroDone = $("heroNhDone");
+        var heroTotal = $("heroNhTotal");
+        var pill = $("nhPill");
+        var list = $("nhList");
+        var err = $("nhErr");
+
+        function setCounts(done, total) {
+          if (heroDone) heroDone.textContent = String(done);
+          if (heroTotal) heroTotal.textContent = String(total);
+          if (pill) pill.textContent = done + " / " + total + " climbed";
+        }
+
+        function itemHtml(p) {
+          var done = !!(p && p.climbed);
+          var name = (p && p.name) ? String(p.name) : "Unknown";
+          var date = (p && p.date) ? String(p.date) : "";
+
+          var badge =
+            '<span class="inline-flex h-5 w-5 items-center justify-center rounded-full ring-1 ' +
+            (done
+              ? 'bg-emerald-500/15 text-emerald-600 ring-emerald-500/30 dark:text-emerald-300'
+              : 'bg-violet-500/10 text-violet-600 ring-violet-500/25 dark:text-violet-300') +
+            '">' + (done ? "✓" : "•") + "</span>";
+
+          var dateHtml = date
+            ? '<span class="ml-2 text-xs text-zinc-500 dark:text-zinc-400">' + date + "</span>"
+            : "";
+
+          return (
+            '<div class="flex items-center gap-2 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm ' +
+            'dark:border-zinc-800 dark:bg-zinc-900/30">' +
+            badge +
+            '<span class="min-w-0 truncate text-zinc-900 dark:text-white">' + name + "</span>" +
+            dateHtml +
+            "</div>"
+          );
+        }
+
+        fetch("/data/my-nh4k.json", { cache: "no-store" })
+          .then(function (r) { return r.json(); })
+          .then(function (j) {
+            var peaks = (j && Array.isArray(j.peaks)) ? j.peaks : [];
+            var total = peaks.length;
+            var done = 0;
+            for (var i = 0; i < peaks.length; i++) if (peaks[i] && peaks[i].climbed) done++;
+
+            setCounts(done, total);
+
+            if (!list) return;
+            var html = "";
+            for (var k = 0; k < peaks.length; k++) html += itemHtml(peaks[k]);
+            list.innerHTML = html;
+          })
+          .catch(function (e) {
+            console.error("[NH4K] failed:", e);
+            if (err) {
+              err.textContent = "Could not load /data/my-nh4k.json";
+              err.classList.remove("hidden");
+            }
+            setCounts(0, 0);
+          });
+      })();
+    </script> </section>  <section class="mt-10"> <h2 class="text-lg font-semibold tracking-tight">Other climbs</h2> <div class="mt-4 grid gap-4 sm:grid-cols-2"> <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40"> <div class="font-semibold">Torres del Paine — W Circuit</div> <div class="mt-1 text-sm text-zinc-600 dark:text-zinc-300"> Chile · March 2016 </div>  </div><div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/40"> <div class="font-semibold">Guadalupe Peak</div> <div class="mt-1 text-sm text-zinc-600 dark:text-zinc-300"> Texas · Dec 2021 </div>  </div> </div> </section>  </main> <footer class="mx-auto max-w-5xl px-5 pb-10 text-sm text-zinc-500 dark:text-zinc-400"> <div class="border-t border-zinc-200 pt-6 dark:border-zinc-800">
+© 2026 Yu Zhang · Built with Astro + Tailwind
+</div> </footer> </body></html>
